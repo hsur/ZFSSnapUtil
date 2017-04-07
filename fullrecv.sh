@@ -30,7 +30,7 @@ full_recv_snap(){
 main(){
 	  echo "===== START: $SCRIPT_NAME ====="
 
-	  full_snap_recv hoge
+	  full_recv_snap hoge
 
 	  echo "===== END: $SCRIPT_NAME ====="
 }
