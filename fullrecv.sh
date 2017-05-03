@@ -19,12 +19,12 @@ get_remote_snap(){
 
 full_recv_snap(){
 	# get latest snapshot from remote
-	#LATEST_SNAP=`get_remote_snap $1 | sort -r | tail -n 2 | head -n 1`
+	#LATEST_SNAP=`get_remote_snap $1 | tail -n 2 | head -n 1`
 	LATEST_SNAP=`get_remote_snap $1 | sort -r | head -n 1`
 	
 	# transer snapshot
 	echo "[INFO] Starting FULL snapshot transfer: $LATEST_SNAP"
-	$SSH zfs send "$REMOTE_TANK/$1@$LATEST_SNAP" | zfs recv -vF "$LOCAL_TANK/$1"
+	$SSH zfs send "$REMOTE_TANK/$1@$LATEST_SNAP" | zfs recv -vF "$LOCAL_TANK/$1@$LATEST_SNAP"
 }
 
 main(){
