@@ -24,7 +24,8 @@ incl_snap_recv(){
 	# seach common snapshot
 	COMMON_SNAP=`join <( get_remote_snap $1 ) <( get_local_snap $1 ) | sort -r | head -n 1`
 	if [ -z $COMMON_SNAP ] ; then
-		echo "[WARN] No common snapshot found"
+		echo "[WARN] No common snapshot found : $1"
+		diff -u <( get_remote_snap $1 ) <( get_local_snap $1 )
 		return 1
 	else
 		echo "[INFO] Common snapshot found : $COMMON_SNAP"
