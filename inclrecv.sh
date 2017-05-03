@@ -31,8 +31,8 @@ incl_snap_recv(){
 	fi
 
 	# get latest snapshot from remote
-	#LATEST_SNAP=`get_remote_snap $1 | sort | tail -n 2 | head -n 1`
-	LATEST_SNAP=`get_remote_snap $1 | sort | head -n 1`
+	#LATEST_SNAP=`get_remote_snap $1 | tail -n 2 | head -n 1`
+	LATEST_SNAP=`get_remote_snap $1 | sort -r | head -n 1`
 	if [ "$COMMON_SNAP" = "$LATEST_SNAP" ] ; then
 		echo "[INFO] Local volume is up-to-date"
 		return 0
